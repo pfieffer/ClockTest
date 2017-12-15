@@ -12,10 +12,10 @@ public class MainActivity extends AppCompatActivity {
 
     TextView stopwatch_textView;
 
-    Button startButton, stopButton, resetButton;
+    Button startStopButton, stopButton, resetButton;
 
     //for stopButton watch
-    long millisecondTime, startTime, timeBuff, updateTime = 0L ;
+    long millisecondTime, startTime, timeBuff, updateTime = 0L;
     int seconds, minutes, milliSeconds;
 
     Handler handler;
@@ -25,34 +25,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        stopwatch_textView = (TextView)findViewById(R.id.stopwatch_textView);
-        startButton = (Button)findViewById(R.id.stopwatch_start_button);
-        stopButton = (Button)findViewById(R.id.stopwatch_stop_button);
-        resetButton = (Button)findViewById(R.id.stopwatch_reset_button);
+        stopwatch_textView = (TextView) findViewById(R.id.stopwatch_textView);
+        startStopButton = (Button) findViewById(R.id.stopwatch_start_stop_button);
+        stopButton = (Button) findViewById(R.id.stopwatch_stop_button);
+        resetButton = (Button) findViewById(R.id.stopwatch_reset_button);
 
-        handler = new Handler() ;
+        handler = new Handler();
 
-        startButton.setOnClickListener(new View.OnClickListener() {
+        startStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Button startButton = (Button) view;
+                if (startButton.getText().equals("Stop")) {
+                    timeBuff += millisecondTime;
 
-                startTime = SystemClock.uptimeMillis(); //uptimeMillis() returns time in milliseconds since boot
-                handler.postDelayed(runnable, 0);
+                    handler.removeCallbacks(runnable);
 
-                resetButton.setEnabled(false);
+                    startButton.setText(R.string.start);
+                    resetButton.setEnabled(true);
+                } else {
+                    startTime = SystemClock.uptimeMillis(); //uptimeMillis() returns time in milliseconds since boot
+                    handler.postDelayed(runnable, 0);
 
-            }
-        });
+                    startButton.setText(R.string.stop);
+                    resetButton.setEnabled(false);
+                }
 
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                timeBuff += millisecondTime;
-
-                handler.removeCallbacks(runnable);
-
-                resetButton.setEnabled(true);
 
             }
         });
@@ -62,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //setting variable to zero
-                millisecondTime = 0L ;
-                startTime = 0L ;
-                timeBuff = 0L ;
-                updateTime = 0L ;
-                seconds = 0 ;
-                minutes = 0 ;
-                milliSeconds = 0 ;
+                millisecondTime = 0L;
+                startTime = 0L;
+                timeBuff = 0L;
+                updateTime = 0L;
+                seconds = 0;
+                minutes = 0;
+                milliSeconds = 0;
 
                 //setting stopwatch textview to zero
                 stopwatch_textView.setText(R.string.zero_time);

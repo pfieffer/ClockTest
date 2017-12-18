@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView stopwatch_textView;
 
-    Button startStopButton, stopButton, resetButton;
+    Button startStopButton, resetButton;
 
     //for stopButton watch
     long millisecondTime, startTime, timeBuff, updateTime = 0L;
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         stopwatch_textView = (TextView) findViewById(R.id.stopwatch_textView);
         startStopButton = (Button) findViewById(R.id.stopwatch_start_stop_button);
-        stopButton = (Button) findViewById(R.id.stopwatch_stop_button);
         resetButton = (Button) findViewById(R.id.stopwatch_reset_button);
 
         handler = new Handler();

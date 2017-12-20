@@ -13,11 +13,12 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="@string/zero_time"
-        android:textColor="#009688"
+        android:textColor="@color/green"
         android:textSize="@dimen/stopwatch_text_size"
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/stopwatch_buttons_pane"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/stopwatch_textView"
@@ -38,5 +39,25 @@
             android:layout_weight="1.0"
             android:text="@string/reset" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/timer_text_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stopwatch_buttons_pane"
+        android:layout_centerHorizontal="true"
+        android:text="@string/time_since_last_stop"
+        android:textColor="@color/green"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/timer_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timer_text_desc"
+        android:layout_centerHorizontal="true"
+        android:text="@string/zero_time"
+        android:textColor="@color/green"
+        android:textSize="@dimen/timer_text_size" />
 
 </RelativeLayout>

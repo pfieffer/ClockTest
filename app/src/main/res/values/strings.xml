@@ -6,4 +6,5 @@
     <string name="reset">Reset</string>
 
     <string name="zero_time">00:00:00</string>
+    <string name="time_since_last_stop">Time since last stop:</string>
 </resources>
